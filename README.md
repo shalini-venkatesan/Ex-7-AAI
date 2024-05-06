@@ -28,16 +28,16 @@ nltk.download('punkt')
 nltk.download('stopwords')
 def preprocess_text(text):
 ```
-# Tokenize the text into words
+### Tokenize the text into words
 ```py
     words = word_tokenize(text)
 ```
-# Remove stopwords and punctuation
+### Remove stopwords and punctuation
 ```py
     stop_words= set(stopwords.words( 'english'))
     filtered_words= [word for word in words if word. lower() not in stop_words and word.isalnum()]
 ```
-# Stemming
+### Stemming
 ```py
     stemmer = PorterStemmer()
 
@@ -48,11 +48,11 @@ def generate_summary(text,num_sentences=3):
     sentences= sent_tokenize(text)
     preprocessed_text = preprocess_text(text)
 ```
-# Calculate the frequency of each word
+### Calculate the frequency of each word
 ```py
     word_frequencies =nltk. FreqDist (preprocessed_text)
 ```
-# Calculate the score for each sentence based on word frequency
+### Calculate the score for each sentence based on word frequency
 ```py
     sentence_scores ={}
     for sentence in sentences:
@@ -63,7 +63,7 @@ def generate_summary(text,num_sentences=3):
                 else:
                     sentence_scores[sentence]+= freq
 ```
-# Select top N sentences with highest scores
+### Select top N sentences with highest scores
 ```py
     summary_sentences= sorted(sentence_scores, key=sentence_scores.get,reverse=True) [ : num_sentences]
 
